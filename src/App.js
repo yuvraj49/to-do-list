@@ -6,7 +6,6 @@ import ToDoList from './ToDoList';
 import './styles.css';
 
 
-
 class App extends Component {
   constructor(props){
     super(props);
@@ -14,38 +13,40 @@ class App extends Component {
       items: [{
         heading: 'Demo Heading',
         details: 'Demo detail for completing the to do list app right away',
-        date: ''
-      }
-      ]
+        id: 0
+      }],
+      counter: 0,
     };
   }
 
   handleClick(i) {
-
      this.setState(prevState => ({
-      items: prevState.items.concat(i)
+      items: prevState.items.concat(i),
+      counter : prevState.counter + 1 
     }));
 
-     if(this.state.items.length >= 3){
+     if(this.state.counter >= 3){
       console.log("here is the result");
      }
-
-    console.log(i);
   }
 
-
+  handleDelete(i){
+    var array = this.state.items;
+    array.splice(i,1);
+    this.setState((prevState) => ({
+      items: array,
+      counter: prevState.counter - 1
+    }));
+    console.log(this.state);
+  }
 
   render() {
     return (
       <div className="App">
-
-
         <CreateToDo
              onReturn={i => this.handleClick(i)}
          />
-        <ToDoList item = {this.state.items} />
-
-
+        <ToDoList item = {this.state.items} onDelete = {j => this.handleDelete(j)} />
       </div>
     );
   }
