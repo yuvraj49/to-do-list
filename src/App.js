@@ -26,7 +26,7 @@ class App extends Component {
     }));
 
      if(this.state.counter >= 3){
-      console.log("here is the result");
+      console.log("here is the result when we render 3 items");
      }
   }
 
@@ -37,7 +37,6 @@ class App extends Component {
       items: array,
       counter: prevState.counter - 1
     }));
-    console.log(this.state);
   }
 
   render() {
