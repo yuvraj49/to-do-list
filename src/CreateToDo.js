@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
-import {Row, Input, Toast} from 'react-materialize';
+import {Row, Toast} from 'react-materialize';
 import './styles.css';
+
+// import postRequest from './Api.js'
+var {postRequest} = require('./Api.js');
+
 
 
 
@@ -33,6 +37,10 @@ class CreateToDo extends Component {
 		}
 
 		let temp = Object.assign({},this.state);
+		/* send post request here */
+
+
+		const temp1 = postRequest(temp);
 		this.props.onReturn(temp);
 	}
 

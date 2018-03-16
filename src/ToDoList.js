@@ -10,12 +10,14 @@ class ToDoList extends Component {
 
 	render(){	
 		let result = this.props.item;
+
 		return(<div className="collapsed">
 				<h4> Your Created To Do List </h4> 
 			 	<Collapsible popout>
 			 			{result.map((items,index) =>  (
-			 				<CollapsibleItem header = {items.heading} key={index} onClick={() => this.handleDelete(index)} >
-  					  			{items.details} 
+			 				<CollapsibleItem header = {items.heading}>
+  					  			{items.details}
+  					  			<button onClick={() => this.handleDelete(items.id)}> Mark as done</button>
   					  			<i className="fas fa-times"></i>
   					  		</CollapsibleItem> 
 			 				))}
